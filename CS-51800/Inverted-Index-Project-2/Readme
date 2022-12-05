@@ -1,0 +1,1 @@
+This progams builds inverted index, and it accepts collections of text files to be indexed. The user should be able to query for document, and using cluster approach it will find relevant document.
