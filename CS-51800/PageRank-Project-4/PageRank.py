@@ -22,6 +22,8 @@ class PageRank:
 
         ## transform the matrix with teleport
         self._transformMatrixIntoStochasticMatrix()
+        print("        [Matrix after applying teleport]")
+        self._printMatrix()
 
         print("Iterating until converges")
         ## perform multiplication until it converges
