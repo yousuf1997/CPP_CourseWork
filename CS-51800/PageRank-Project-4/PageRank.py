@@ -5,6 +5,7 @@ import collections
 import time
 #import other modules as needed
 class PageRank:
+
     def __init__(self):
         self._adjListMap = {}
 
@@ -13,24 +14,78 @@ class PageRank:
         pageRankVector = []
         ## for purpose of converge
         prevPageRankVector = []
-
+        iterationCount = 0
         ## builds page initial page rank vector
         for i in range(self._totalNumberPages):
             pageRankVector.append(float(1.0/self._totalNumberPages))
 
+        ## transform the matrix with teleport
+        self._transformMatrixIntoStochasticMatrix()
+
+        print("Iterating until converges")
+        ## perform multiplication until it converges
         while prevPageRankVector != pageRankVector:
             prevPageRankVector = pageRankVector
             ## new vector will be obtained in the following
             pageRankVector = self._multiplyMatrixWithPagRankVector(pageRankVector)
+            print("--------------------------------------------------------------")
+            print("Iteration : ", iterationCount)
+            self.printMatrix()
+            iterationCount = iterationCount + 1
 
-        print("Page Ranked", pageRankVector)
+        print("Total Iteration performed ", iterationCount)
 
         ## build new map and sort it eventually
         pageRankMap = {}
 
         for i in range(self._totalNumberPages):
             pageRankMap[i] = pageRankVector[i]
+
+        ## sort the dictionary
+        pageRankMap = dict(sorted(pageRankMap.items(), key=lambda item: item[1], reverse=True))
         print(pageRankMap)
+
+        ## write the page ranked into the out.txt
+        file = open("out.txt", "w")
+        for page, rank in pageRankMap.items():
+            file.write("Page : " + str(page) + ", Rank : " + str(rank) + "\n")
+        file.close()
+
+    '''
+        The following method transform the current matrix into the stochastic matrices with teleport
+        A = p * M + (1 - p) * [1/N]
+    '''
+    def _transformMatrixIntoStochasticMatrix(self):
+        ## default teleport
+        teleport_a = 0.15
+
+        ## build matrix for 1/N , and sets placeholder 1/total_pages
+        matrixB = self._buildMatrix(self._totalNumberPages, self._totalNumberPages, float(1.0/self._totalNumberPages))
+
+        ## multipy original matrix, and matrixB with teleport
+        self._matrix = self._multiplyMatrixWithX(self._matrix, teleport_a)
+        matrixB = self._multiplyMatrixWithX(matrixB, 1 - teleport_a)
+
+        ## add two matrix as per the formula
+        self._matrix = self._addMatrixOfEqualSize(self._matrix, matrixB)
+
+
+    '''The following method multiplies matrix with x'''
+    def _multiplyMatrixWithX(self, matrix, x):
+        for m in range(len(matrix)):
+            for k in range(len(matrix[0])):
+                matrix[m][k] = matrix[m][k] * x
+        return matrix
+
+    '''The following method adds two equal size matrix'''
+    def _addMatrixOfEqualSize(self,matrix1, matrix2):
+        rMatrix = []
+        for k in range(len(matrix1)):
+            row = []
+            for m in range(len(matrix1[0])):
+                row.append(float(matrix1[k][m] + matrix2[k][m]))
+            rMatrix.append(row)
+        return rMatrix
 
     ''' This method reads the file, parse the data into adjacency list'''
     def _parseTheGraph(self, filePath):
@@ -53,9 +108,10 @@ class PageRank:
         print("Total Number Pages :", self._totalNumberPages)
         print("Total Number of links :", self._totalNumberOfLinks)
         ## build matrix
-        self._buildMatrix(self._totalNumberPages, self._totalNumberPages, 0.0)
+        self._matrix = self._buildMatrix(self._totalNumberPages, self._totalNumberPages, 0.0)
         ## plot the points
         self._plotMatrixWithOutGoingPath(self._adjListMap)
+        file.close()
 
     '''This method builds the matrix with default value'''
     def _buildMatrix(self, M:int, N:int, placeHolder):
@@ -65,7 +121,7 @@ class PageRank:
             for y in range(N):
                 row.append(placeHolder)
             matrix.append(row)
-        self._matrix = matrix
+        return matrix
 
     def printMatrix(self):
         for i in range(len(self._matrix)):
@@ -75,7 +131,7 @@ class PageRank:
     def _documentRowFormatter(self, docsList, index:str):
             formatLiteral = " | "
             for i in range(len(docsList)):
-                formatLiteral = formatLiteral + "{:<5} "
+                formatLiteral = formatLiteral + "{:<7} "
             print(index, formatLiteral.format(*docsList) + "|")
 
     '''This method sets value into cells with values from the adjacencyList'''
@@ -99,6 +155,10 @@ class PageRank:
             for node in adjList:
                 self._matrix[int(source)][int(node)] = transitionProbability
 
+    '''
+        This method multiplies the original matrix with pagerankvector
+        It is being used to until the pagerankVector converges to some point
+    '''
     def _multiplyMatrixWithPagRankVector(self, pageRankVector) -> list:
         resultantVector = []
         index = 0
