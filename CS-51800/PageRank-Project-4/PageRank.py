@@ -4,6 +4,7 @@ import os
 import collections
 import time
 #import other modules as needed
+## https://www.youtube.com/watch?v=CArJh_36Tm0
 class PageRank:
 
     def __init__(self):
@@ -30,7 +31,7 @@ class PageRank:
             pageRankVector = self._multiplyMatrixWithPagRankVector(pageRankVector)
             print("--------------------------------------------------------------")
             print("Iteration : ", iterationCount)
-            self.printMatrix()
+            self._printMatrix(prevPageRankVector)
             iterationCount = iterationCount + 1
 
         print("Total Iteration performed ", iterationCount)
@@ -43,7 +44,6 @@ class PageRank:
 
         ## sort the dictionary
         pageRankMap = dict(sorted(pageRankMap.items(), key=lambda item: item[1], reverse=True))
-        print(pageRankMap)
 
         ## write the page ranked into the out.txt
         file = open("out.txt", "w")
@@ -123,16 +123,19 @@ class PageRank:
             matrix.append(row)
         return matrix
 
-    def printMatrix(self):
+    def _printMatrix(self, pageRankVector = []):
         for i in range(len(self._matrix)):
-            self._documentRowFormatter(self._matrix[i], str(i))
+            self._documentRowFormatter(self._matrix[i], str(i), pageRankVector[i] if pageRankVector != [] else -1)
 
     '''This method prints the row in pretty format'''
-    def _documentRowFormatter(self, docsList, index:str):
+    def _documentRowFormatter(self, docsList, index:str, pageRankVectorVal):
             formatLiteral = " | "
             for i in range(len(docsList)):
                 formatLiteral = formatLiteral + "{:<7} "
-            print(index, formatLiteral.format(*docsList) + "|")
+            if pageRankVectorVal != -1:
+                print(index,formatLiteral.format(*docsList) + "|  " + " | " + str(pageRankVectorVal) + " | ")
+                return
+            print(index,formatLiteral.format(*docsList) + "|  ")
 
     '''This method sets value into cells with values from the adjacencyList'''
     def _plotMatrixWithOutGoingPath(self, adjacencyListDict):
@@ -143,10 +146,10 @@ class PageRank:
             for node in adjList:
                 self._matrix[int(source)][int(node)] = 1.0
         print("        [Matrix with outgoing path]")
-        self.printMatrix()
+        self._printMatrix()
         self._transformMatrixToTransitionState(adjacencyListDict)
         print("        [Matrix with transition probability]")
-        self.printMatrix()
+        self._printMatrix()
 
     '''This method the matrix into transition probability state'''
     def _transformMatrixToTransitionState(self, adjacencyListDict):
