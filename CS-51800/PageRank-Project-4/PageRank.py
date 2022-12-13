@@ -4,7 +4,6 @@ import os
 import collections
 import time
 #import other modules as needed
-## https://www.youtube.com/watch?v=CArJh_36Tm0
 class PageRank:
 
     def __init__(self):
@@ -21,7 +20,7 @@ class PageRank:
             pageRankVector.append(float(1.0/self._totalNumberPages))
 
         ## transform the matrix with teleport
-        self._transformMatrixIntoStochasticMatrix()
+        self._transformMatrixIntoTeleportMatrix()
         print("        [Matrix after applying teleport]")
         self._printMatrix()
 
@@ -57,12 +56,18 @@ class PageRank:
         The following method transform the current matrix into the stochastic matrices with teleport
         A = p * M + (1 - p) * [1/N]
     '''
-    def _transformMatrixIntoStochasticMatrix(self):
+    def _transformMatrixIntoTeleportMatrix(self):
         ## default teleport
         teleport_a = 0.15
 
         ## build matrix for 1/N , and sets placeholder 1/total_pages
         matrixB = self._buildMatrix(self._totalNumberPages, self._totalNumberPages, float(1.0/self._totalNumberPages))
+
+        ## set equal x = y cells to zero
+        for m in range(len(matrixB)):
+            for n in range(len(matrixB[m])):
+                if n == m:
+                    matrixB[m][n] = 0
 
         ## multipy original matrix, and matrixB with teleport
         self._matrix = self._multiplyMatrixWithX(self._matrix, teleport_a)
