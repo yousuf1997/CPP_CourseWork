@@ -1,2 +1,3 @@
-## Description 
-#### This progams builds inverted index, and it accepts collections of text files to be indexed. The user should be to query for document, and the index process it as set of boolean query.
+# Inverted Index 
+
+## This project is part of Information Retrieval course (CS-5180) which builds inverted index and position index of the terms by processing text documents, and it expects files only in txt. 
