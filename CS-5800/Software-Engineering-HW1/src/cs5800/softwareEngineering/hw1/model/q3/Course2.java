@@ -83,6 +83,25 @@ public class Course2 {
         this.textBooks = textBooks;
     }
 
+    public void removeTextBooksByIndex(int indexToBeDeleted) throws Exception {
+        if (textBooks.isEmpty()){
+            throw new Exception("List is empty, add it please!");
+        }
+        if (indexToBeDeleted >= textBooks.size()){
+            throw new Exception("Invalid index!");
+        }
+        textBooks.remove(indexToBeDeleted);
+    }
+
+    public void removeInstructorByIndex(int indexToBeDeleted) throws Exception {
+        if (instructors.isEmpty()){
+            throw new Exception("List is empty, add it please!");
+        }
+        if (indexToBeDeleted >= instructors.size()){
+            throw new Exception("Invalid index!");
+        }
+        textBooks.remove(indexToBeDeleted);
+    }
 
     public void print(){
         System.out.println("Course Name : " + this.courseName);
