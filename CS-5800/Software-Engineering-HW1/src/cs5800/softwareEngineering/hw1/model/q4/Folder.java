@@ -38,7 +38,7 @@ public class Folder {
         if (subFolders.isEmpty()) {
             return;
         }
-        
+
         String[] path = folderPath.split("/");
         deleteFolderHelper(path, 1, this.getSubFolders());
     }
