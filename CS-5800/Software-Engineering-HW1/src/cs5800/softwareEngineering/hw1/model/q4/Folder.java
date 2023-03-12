@@ -34,9 +34,11 @@ public class Folder {
      * Folder path will be received as folder/folder2/folder3 -> folder3 will be deleted
      */
     public void deleteFolder(String folderPath){
-        if(subFolders.isEmpty()){
+
+        if (subFolders.isEmpty()) {
             return;
         }
+        
         String[] path = folderPath.split("/");
         deleteFolderHelper(path, 1, this.getSubFolders());
     }
@@ -67,14 +69,10 @@ public class Folder {
         }
 
         // traverse the subFolders, then recurse
-        Folder sub = subFolders.stream().filter(folder -> folder != null
+        subFolders.stream().filter(folder -> folder != null
                 && folder.getName().equalsIgnoreCase(currentFolderName))
-                .findFirst().orElse(null);
-
-        if (sub != null){
-            // recurse
-            deleteFolderHelper(path, index + 1, sub.getSubFolders());
-        }
+                .findFirst()
+                .ifPresent(folder -> deleteFolderHelper(path, index + 1, folder.getSubFolders()));
     }
 
     public void print(){

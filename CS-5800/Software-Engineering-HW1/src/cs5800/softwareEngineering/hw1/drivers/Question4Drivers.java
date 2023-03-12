@@ -6,11 +6,10 @@ import cs5800.softwareEngineering.hw1.model.q4.Folder;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 /**
- * This file consists drivers for Question 3
+ * This file consists drivers for Question 4
  */
 public class Question4Drivers {
 
@@ -72,7 +71,7 @@ public class Question4Drivers {
         // create php_demo1
         Folder php_demo1 = new Folder("php_demo1", new ArrayList<>(), php_subFiles);
 
-        // before delete operation 
+        // before delete operation
         System.out.println("----------------------------------");
         System.out.println("Before delete operation..");
         php_demo1.print();
