@@ -7,6 +7,8 @@ public class HourlyEmployee extends Employee {
 
     public HourlyEmployee(String firstName, String lastName, String socialSecurityNumber, Double wage, Integer numberOfHoursWorked) {
         super(firstName, lastName, socialSecurityNumber);
+        this.wage = wage;
+        this.numberOfHoursWorked = numberOfHoursWorked;
     }
 
     public Double getWage() {

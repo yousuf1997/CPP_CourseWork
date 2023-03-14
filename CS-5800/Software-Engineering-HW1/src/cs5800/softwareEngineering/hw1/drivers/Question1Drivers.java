@@ -1,9 +1,6 @@
 package cs5800.softwareEngineering.hw1.drivers;
 
-import cs5800.softwareEngineering.hw1.model.q1.BaseEmployee;
-import cs5800.softwareEngineering.hw1.model.q1.CommissionEmployee;
-import cs5800.softwareEngineering.hw1.model.q1.HourlyEmployee;
-import cs5800.softwareEngineering.hw1.model.q1.SalariedEmployee;
+import cs5800.softwareEngineering.hw1.model.q1.*;
 
 /**
  * This file consists drivers for Question 1
@@ -22,5 +19,48 @@ public class Question1Drivers {
 
         BaseEmployee baseEmployee = new BaseEmployee("Mike","Davenport", "666-66-6666",95000.0);
 
+        printSalariedEmployee(salariedEmployee);
+        printSalariedEmployee(salariedEmployee1);
+
+        printHourlyEmployee(hourlyEmployee);
+        printHourlyEmployee(hourlyEmployee1);
+
+        printCommissionEmployee(commissionEmployee);
+        printCommissionEmployee(commissionEmployee1);
+
+        printBaseEmployee(baseEmployee);
     }
+
+    public static void printSalariedEmployee(SalariedEmployee salariedEmployee){
+        System.out.println("--- Salaried Employee ---");
+        printEmployeeBasicInfo(salariedEmployee);
+        System.out.println("Weekly Salary : " + salariedEmployee.getWeeklySalary());
+    }
+
+    public static void printEmployeeBasicInfo(Employee employee){
+        System.out.println("First Name : " + employee.getFirstName());
+        System.out.println("Last Name : " + employee.getLastName());
+        System.out.println("Social Security Number : " + employee.getSocialSecurityNumber());
+    }
+
+    public static void printHourlyEmployee(HourlyEmployee hourlyEmployee){
+        System.out.println("--- Hourly Employee ---");
+        printEmployeeBasicInfo(hourlyEmployee);
+        System.out.println("Wage : " + hourlyEmployee.getWage());
+        System.out.println("Number of Hours Worked : " + hourlyEmployee.getNumberOfHoursWorked());
+    }
+
+    public static void printCommissionEmployee(CommissionEmployee commissionEmployee){
+        System.out.println("--- Commission Employee ---");
+        printEmployeeBasicInfo(commissionEmployee);
+        System.out.println("Commission Rate : " + commissionEmployee.getCommissionRate());
+        System.out.println("Gross Sales: " + commissionEmployee.getGrossSales());
+    }
+
+    public static void printBaseEmployee(BaseEmployee baseEmployee){
+        System.out.println("--- Base Employee ---");
+        printEmployeeBasicInfo(baseEmployee);
+        System.out.println("Weekly Salary : " + baseEmployee.getWeeklySalary());
+    }
+
 }
