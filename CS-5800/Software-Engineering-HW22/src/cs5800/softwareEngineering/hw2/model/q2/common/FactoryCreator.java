@@ -13,7 +13,7 @@ import cs5800.softwareEngineering.hw2.model.q2.car.HondaFactory;
 import cs5800.softwareEngineering.hw2.model.q2.car.PorscheFactory;
 import cs5800.softwareEngineering.hw2.model.q2.car.TeslaFactory;
 
-public class FactoryCreator {
+public abstract class FactoryCreator {
 
     public static CarFactory createCarFactory(FactoryType factoryType) {
         switch (factoryType){
