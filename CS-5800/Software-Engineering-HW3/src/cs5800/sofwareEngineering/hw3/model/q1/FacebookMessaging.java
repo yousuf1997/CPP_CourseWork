@@ -11,15 +11,15 @@ public class FacebookMessaging extends MessagingApplication {
 
     @Override
     public void sendMessage(MessageTypeEnum messageType) {
-        System.out.println("FacebookMessaging Sending... (" + version +")");
         MessageType messageSender = this.messageTypes.stream().filter(messageMedium -> messageMedium
                 .getMessageType().equals(messageType))
                 .findFirst()
                 .orElse(null);
         if (messageSender == null) {
-            System.out.println(messageType + " messaging is not supported by FacebookMessaging");
+            System.out.println(messageType + " messaging is not supported by FacebookMessaging (" + version +")");
             return;
         }
+        System.out.println("FacebookMessaging Sending... (" + version +")");
         messageSender.sendMessage();
     }
 }
