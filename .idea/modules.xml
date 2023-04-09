@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/CPP_CourseWork.iml" filepath="$PROJECT_DIR$/.idea/CPP_CourseWork.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CS-5800/Software-Engineering-HW1/Software-Engineering-HW1.iml" filepath="$PROJECT_DIR$/CS-5800/Software-Engineering-HW1/Software-Engineering-HW1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CS-5800/Software-Engineering-HW22/Software-Engineering-HW22.iml" filepath="$PROJECT_DIR$/CS-5800/Software-Engineering-HW22/Software-Engineering-HW22.iml" />
+    </modules>
+  </component>
+</project>
