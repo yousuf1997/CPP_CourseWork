@@ -8,7 +8,7 @@ public class Question1Driver {
         MessagingApplication facebookMessagingV1 = new FacebookMessaging("V1",new TextMessage(), new ImageMessage());
         MessagingApplication whatsAppMessagingV1 = new WhatsAppMessaging("V1",new TextMessage());
         MessagingApplication telegramMessagingV1 = new TelegramMessaging("V1",new TextMessage());
-        
+
         // send text message
         facebookMessagingV1.sendMessage(MessageTypeEnum.TEXT);
         whatsAppMessagingV1.sendMessage(MessageTypeEnum.TEXT);
