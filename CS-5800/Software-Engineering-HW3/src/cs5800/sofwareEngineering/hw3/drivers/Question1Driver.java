@@ -1,6 +1,14 @@
 package cs5800.sofwareEngineering.hw3.drivers;
 
 import cs5800.sofwareEngineering.hw3.model.q1.*;
+import cs5800.sofwareEngineering.hw3.model.q1.message.EncryptedTextMessage;
+import cs5800.sofwareEngineering.hw3.model.q1.message.ImageMessage;
+import cs5800.sofwareEngineering.hw3.model.q1.message.TextMessage;
+import cs5800.sofwareEngineering.hw3.model.q1.message.VideoMessage;
+import cs5800.sofwareEngineering.hw3.model.q1.messagemedium.FacebookMessaging;
+import cs5800.sofwareEngineering.hw3.model.q1.messagemedium.MessagingApplication;
+import cs5800.sofwareEngineering.hw3.model.q1.messagemedium.TelegramMessaging;
+import cs5800.sofwareEngineering.hw3.model.q1.messagemedium.WhatsAppMessaging;
 
 public class Question1Driver {
     public static void main(String[] args) {

@@ -1,4 +1,7 @@
-package cs5800.sofwareEngineering.hw3.model.q1;
+package cs5800.sofwareEngineering.hw3.model.q1.messagemedium;
+
+import cs5800.sofwareEngineering.hw3.model.q1.MessageTypeEnum;
+import cs5800.sofwareEngineering.hw3.model.q1.message.MessageType;
 
 import java.util.List;
 
