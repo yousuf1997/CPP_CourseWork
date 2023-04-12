@@ -10,6 +10,9 @@ import cs5800.sofwareEngineering.hw3.model.q1.messagemedium.MessagingApplication
 import cs5800.sofwareEngineering.hw3.model.q1.messagemedium.TelegramMessaging;
 import cs5800.sofwareEngineering.hw3.model.q1.messagemedium.WhatsAppMessaging;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class Question1Driver {
     public static void main(String[] args) {
         // version 1 with very specific functionalities
