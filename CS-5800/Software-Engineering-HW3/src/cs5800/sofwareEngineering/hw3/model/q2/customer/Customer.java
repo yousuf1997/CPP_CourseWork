@@ -2,6 +2,7 @@ package cs5800.sofwareEngineering.hw3.model.q2.customer;
 
 import cs5800.sofwareEngineering.hw3.model.q2.food.Food;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Customer extends LoyaltyStatus {
@@ -10,6 +11,7 @@ public class Customer extends LoyaltyStatus {
 
     public Customer(boolean loyalCustomer) {
         this.loyalCustomer = loyalCustomer;
+        orders = new ArrayList<>();
     }
 
     public void addOrder(Food food) {
@@ -17,7 +19,7 @@ public class Customer extends LoyaltyStatus {
     }
 
     public double calculatePriceForOrders() {
-        return orders.stream().mapToDouble(Food::getFoodBasePrice).sum();
+        return orders.stream().mapToDouble(Food::calculatePrice).sum();
     }
 
     @Override

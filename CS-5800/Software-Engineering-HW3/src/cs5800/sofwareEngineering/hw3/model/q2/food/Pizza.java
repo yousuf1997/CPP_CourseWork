@@ -4,8 +4,8 @@ public class Pizza extends Food {
 
     private double foodBasePrice;
 
-    public Pizza(double basePrice) {
-        this.foodBasePrice = basePrice;
+    public Pizza() {
+        this.foodBasePrice = 10.99;
     }
 
     @Override
