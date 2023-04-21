@@ -2,6 +2,8 @@ package cs5800.sofwareEngineering.hw4.model.character;
 
 import cs5800.sofwareEngineering.hw4.model.font.FontColor;
 import cs5800.sofwareEngineering.hw4.model.font.FontFamily;
+import cs5800.sofwareEngineering.hw4.processor.DocumentProcessor;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,6 +17,7 @@ public class CharacterTextFactory {
     }
 
     // input is like: [char::FONT_FAMILY::COLOR::SIZE]
+    // this will be used by the Document Processor
     public static CharacterText parseCharacterAndBuildCharacterText(String serializedCharacter) {
         if (serializedCharacter == null || serializedCharacter.isEmpty()) {
             return null;
@@ -37,6 +40,21 @@ public class CharacterTextFactory {
         // put in the cache
         CHARACTER_BUCKET.put(serializedCharacter, newCharacter);
 
+        return newCharacter;
+    }
+
+    public static CharacterText buildCharacterText(Character character, FontFamily fontFamily, FontColor fontColor, int fontSize) {
+        /**
+         *  So like I mentioned in the Question1DriverPart1 each character will be stored with meta data in the file
+         *  as [M::ARIAL::BLUE::2], this serialized text will serve as key in the map, since all the characters are stored like this. each combination will yield different format
+         */
+        String key = DocumentProcessor.serializeCharacter(character, fontFamily, fontColor, fontSize);
+        if (CHARACTER_BUCKET.containsKey(key)) {
+            return CHARACTER_BUCKET.get(key);
+        }
+        CharacterText newCharacter = new CharacterText(character, fontColor, fontFamily, fontSize);
+        // put in the cache
+        CHARACTER_BUCKET.put(key, newCharacter);
         return newCharacter;
     }
 

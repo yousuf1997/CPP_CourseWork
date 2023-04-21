@@ -2,7 +2,7 @@ package cs5800.sofwareEngineering.hw4.model.font;
 
 public enum FontFamily {
     ARIAL,
-    CALIBRI,
+    TIMES_ROMAN,
     VERDANA;
 
     public static FontFamily createFont(String font) {
@@ -13,8 +13,8 @@ public enum FontFamily {
         switch (font) {
             case "ARIAL" :
                 return ARIAL;
-            case "CALIBRI" :
-                return ARIAL;
+            case "TIMES_ROMAN" :
+                return TIMES_ROMAN;
             case "VERDANA" :
                 return VERDANA;
             default:
