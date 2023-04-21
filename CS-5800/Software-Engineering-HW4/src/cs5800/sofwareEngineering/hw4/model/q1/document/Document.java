@@ -1,6 +1,6 @@
-package cs5800.sofwareEngineering.hw4.model.document;
+package cs5800.sofwareEngineering.hw4.model.q1.document;
 
-import cs5800.sofwareEngineering.hw4.model.character.CharacterText;
+import cs5800.sofwareEngineering.hw4.model.q1.character.CharacterText;
 
 import java.util.List;
 

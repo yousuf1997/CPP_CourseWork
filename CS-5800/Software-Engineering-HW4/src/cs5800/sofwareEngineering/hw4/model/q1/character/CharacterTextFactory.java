@@ -1,13 +1,13 @@
-package cs5800.sofwareEngineering.hw4.model.character;
+package cs5800.sofwareEngineering.hw4.model.q1.character;
 
-import cs5800.sofwareEngineering.hw4.model.font.FontColor;
-import cs5800.sofwareEngineering.hw4.model.font.FontFamily;
-import cs5800.sofwareEngineering.hw4.processor.DocumentProcessor;
+import cs5800.sofwareEngineering.hw4.model.q1.font.FontColor;
+import cs5800.sofwareEngineering.hw4.model.q1.font.FontFamily;
+import cs5800.sofwareEngineering.hw4.q1.processor.DocumentProcessor;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static cs5800.sofwareEngineering.hw4.model.character.CharacterText.*;
+import static cs5800.sofwareEngineering.hw4.model.q1.character.CharacterText.*;
 
 public class CharacterTextFactory {
     private static Map<String, CharacterText> CHARACTER_BUCKET = new HashMap<>();

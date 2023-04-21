@@ -1,7 +1,7 @@
-package cs5800.sofwareEngineering.hw4.model.character;
+package cs5800.sofwareEngineering.hw4.model.q1.character;
 
-import cs5800.sofwareEngineering.hw4.model.font.FontColor;
-import cs5800.sofwareEngineering.hw4.model.font.FontFamily;
+import cs5800.sofwareEngineering.hw4.model.q1.font.FontColor;
+import cs5800.sofwareEngineering.hw4.model.q1.font.FontFamily;
 
 public class CharacterText {
     private Character character;

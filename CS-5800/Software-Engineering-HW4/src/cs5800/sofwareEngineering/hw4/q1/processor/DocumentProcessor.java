@@ -1,17 +1,17 @@
-package cs5800.sofwareEngineering.hw4.processor;
+package cs5800.sofwareEngineering.hw4.q1.processor;
 
-import cs5800.sofwareEngineering.hw4.model.character.CharacterText;
-import cs5800.sofwareEngineering.hw4.model.character.CharacterTextFactory;
-import cs5800.sofwareEngineering.hw4.model.document.Document;
-import cs5800.sofwareEngineering.hw4.model.font.FontColor;
-import cs5800.sofwareEngineering.hw4.model.font.FontFamily;
+import cs5800.sofwareEngineering.hw4.model.q1.character.CharacterText;
+import cs5800.sofwareEngineering.hw4.model.q1.character.CharacterTextFactory;
+import cs5800.sofwareEngineering.hw4.model.q1.document.Document;
+import cs5800.sofwareEngineering.hw4.model.q1.font.FontColor;
+import cs5800.sofwareEngineering.hw4.model.q1.font.FontFamily;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import static cs5800.sofwareEngineering.hw4.model.character.CharacterText.*;
+import static cs5800.sofwareEngineering.hw4.model.q1.character.CharacterText.*;
 
 public class DocumentProcessor {
 

@@ -1,4 +1,4 @@
-package cs5800.sofwareEngineering.hw4.model.font;
+package cs5800.sofwareEngineering.hw4.model.q1.font;
 
 public enum FontFamily {
     ARIAL,

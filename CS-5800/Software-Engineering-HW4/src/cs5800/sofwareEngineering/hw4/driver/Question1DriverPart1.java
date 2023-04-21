@@ -1,9 +1,9 @@
 package cs5800.sofwareEngineering.hw4.driver;
 
-import cs5800.sofwareEngineering.hw4.model.document.Document;
-import cs5800.sofwareEngineering.hw4.model.font.FontColor;
-import cs5800.sofwareEngineering.hw4.model.font.FontFamily;
-import cs5800.sofwareEngineering.hw4.processor.DocumentProcessor;
+import cs5800.sofwareEngineering.hw4.model.q1.document.Document;
+import cs5800.sofwareEngineering.hw4.model.q1.font.FontColor;
+import cs5800.sofwareEngineering.hw4.model.q1.font.FontFamily;
+import cs5800.sofwareEngineering.hw4.q1.processor.DocumentProcessor;
 
 public class Question1DriverPart1 {
 

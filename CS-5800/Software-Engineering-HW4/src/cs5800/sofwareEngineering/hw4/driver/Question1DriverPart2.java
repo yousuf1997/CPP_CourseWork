@@ -1,9 +1,9 @@
 package cs5800.sofwareEngineering.hw4.driver;
 
-import cs5800.sofwareEngineering.hw4.model.character.CharacterText;
-import cs5800.sofwareEngineering.hw4.model.character.CharacterTextFactory;
-import cs5800.sofwareEngineering.hw4.model.font.FontColor;
-import cs5800.sofwareEngineering.hw4.model.font.FontFamily;
+import cs5800.sofwareEngineering.hw4.model.q1.character.CharacterText;
+import cs5800.sofwareEngineering.hw4.model.q1.character.CharacterTextFactory;
+import cs5800.sofwareEngineering.hw4.model.q1.font.FontColor;
+import cs5800.sofwareEngineering.hw4.model.q1.font.FontFamily;
 
 public class Question1DriverPart2 {
 
