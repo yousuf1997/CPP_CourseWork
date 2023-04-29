@@ -27,7 +27,7 @@ public class Question1Driver {
         System.out.println("");
 
         // user two will send message to user3,user5
-        user2.sendMessage("Hello! Jacob, and Sam!", Arrays.asList(user3, user5));
+        user2.sendMessage("Hello! Jacob, and Patel!", Arrays.asList(user3, user5));
         // user2 undo the message
         user2.undoMessage();
 
