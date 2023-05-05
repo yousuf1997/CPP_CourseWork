@@ -8,7 +8,10 @@ public class Question1Driver {
     public static void main(String[] args) {
 
         SnackDispenseHandler initialHandler = new SnackSelectionHandler();
-        initialHandler.setNextHandler(new PaymentHandler()).setNextHandler(new DispenserHandler()).setNextHandler(new IdleStateHandler());
+        // this is kind of cycle, once the ide is properly dispensed the state will move to the idle
+        // next state of the ide should be the snack selection for next snack!
+        initialHandler.setNextHandler(new PaymentHandler()).setNextHandler(new DispenserHandler()).setNextHandler(new IdleStateHandler())
+                .setNextHandler(initialHandler);
 
         VendingMachine vendingMachine = new VendingMachine(initialHandler);
 
@@ -49,6 +52,7 @@ public class Question1Driver {
         // Snickers -- should hit zero!!!
         vendingMachine.selectSnack(6);
         vendingMachine.insertMoney(4);
+
     }
 
 
