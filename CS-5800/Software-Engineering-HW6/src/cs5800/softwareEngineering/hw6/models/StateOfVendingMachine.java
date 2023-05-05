@@ -24,6 +24,11 @@ public class StateOfVendingMachine {
         this.vendingMachineState = VendingState.WAITING_FOR_PAYMENT;
     }
 
+    public void setPickSnackState() {
+        System.out.println("The Vending machine is transitioning to Picking Snack state.");
+        this.vendingMachineState = VendingState.PICK_SNACK;
+    }
+
     public void setDispensingState() {
         System.out.println("The Vending machine is transitioning to Waiting for Dispensing state.");
         this.vendingMachineState = VendingState.DISPENSING;

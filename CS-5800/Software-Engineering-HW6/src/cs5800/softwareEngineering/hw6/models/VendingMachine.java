@@ -45,18 +45,18 @@ public class VendingMachine {
 
     public void selectSnack(int snackItemIndex) {
         this.stateOfVendingMachine.setCurrentSnackSelection(snackItemIndex);
-        this.stateOfVendingMachine.setVendingMachineState(StateOfVendingMachine.VendingState.PICK_SNACK);
+        this.stateOfVendingMachine.setPickSnackState();
         this.snackDispenseHandler.handle(this);
     }
 
     public void insertMoney(double money) {
         this.stateOfVendingMachine.setCurrentInsertedMoney(money);
-        this.stateOfVendingMachine.setVendingMachineState(StateOfVendingMachine.VendingState.WAITING_FOR_PAYMENT);
+        this.stateOfVendingMachine.setWaitingForMoneyState();
         this.snackDispenseHandler.handle(this);
     }
 
     public void dispenseSnack() {
-        this.stateOfVendingMachine.setVendingMachineState(StateOfVendingMachine.VendingState.DISPENSING);
+        this.stateOfVendingMachine.setDispensingState();
         this.snackDispenseHandler.handle(this);
     }
 
