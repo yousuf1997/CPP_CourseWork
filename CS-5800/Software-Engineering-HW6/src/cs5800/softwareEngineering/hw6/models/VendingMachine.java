@@ -71,6 +71,8 @@ public class VendingMachine {
         }
         this.stateOfVendingMachine.setDispensingState();
         this.snackDispenseHandler.handle(this);
+        // its does not matter if snack has been dispensed or not
+        // at this level we should progress to the idle state
         this.stateOfVendingMachine.setIdleState();
     }
 
@@ -88,7 +90,7 @@ public class VendingMachine {
             case WAITING_FOR_PAYMENT:
                 return vendingState == StateOfVendingMachine.VendingState.DISPENSING;
             default:
-                return true;
+                return false;
         }
     }
 
