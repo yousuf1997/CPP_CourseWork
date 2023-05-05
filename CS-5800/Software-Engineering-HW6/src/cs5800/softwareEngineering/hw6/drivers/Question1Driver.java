@@ -41,6 +41,7 @@ public class Question1Driver {
         vendingMachine.selectSnack(6);
         vendingMachine.insertMoney(4);
 
+        // in order to make snikcers to zero quantity, we will be keep buying it, and the original quantity is only 3
         // Snickers
         vendingMachine.selectSnack(6);
         vendingMachine.insertMoney(4);
