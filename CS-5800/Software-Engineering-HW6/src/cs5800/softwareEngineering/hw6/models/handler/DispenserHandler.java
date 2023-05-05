@@ -13,6 +13,8 @@ public class DispenserHandler extends SnackDispenseHandler {
             Snack userSelectedSnack = vendingMachine.getSnackStock().get(userSelectedSnackIndex);
             if (userSelectedSnack.getQuantity() <= 0) {
                 System.out.println("DispenserHandler : There are not enough " + userSelectedSnack.getName() +" available, so returning the money");
+                // show move to the idle
+                this.handleNext().handle(vendingMachine);
                 return;
             }
             // decrease the quantity
