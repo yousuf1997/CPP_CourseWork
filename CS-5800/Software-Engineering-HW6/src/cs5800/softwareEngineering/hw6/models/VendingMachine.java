@@ -14,6 +14,7 @@ public class VendingMachine {
         this.stateOfVendingMachine = new StateOfVendingMachine();
         loadAllSnacks();
         this.snackDispenseHandler = snackDispenseHandler;
+        stateOfVendingMachine.setIdleState();
     }
 
     private void loadAllSnacks() {
@@ -44,20 +45,51 @@ public class VendingMachine {
     }
 
     public void selectSnack(int snackItemIndex) {
+        if(!isValidTransitionState(StateOfVendingMachine.VendingState.PICK_SNACK)) {
+            System.out.println("Not valid transition state.");
+            return;
+        }
         this.stateOfVendingMachine.setCurrentSnackSelection(snackItemIndex);
         this.stateOfVendingMachine.setPickSnackState();
         this.snackDispenseHandler.handle(this);
     }
 
     public void insertMoney(double money) {
+        if(!isValidTransitionState(StateOfVendingMachine.VendingState.WAITING_FOR_PAYMENT)) {
+            System.out.println("Not valid transition state.");
+            return;
+        }
         this.stateOfVendingMachine.setCurrentInsertedMoney(money);
         this.stateOfVendingMachine.setWaitingForMoneyState();
         this.snackDispenseHandler.handle(this);
     }
 
     public void dispenseSnack() {
+        if(!isValidTransitionState(StateOfVendingMachine.VendingState.DISPENSING)) {
+            System.out.println("Not valid transition state.");
+            return;
+        }
         this.stateOfVendingMachine.setDispensingState();
         this.snackDispenseHandler.handle(this);
+    }
+
+    public StateOfVendingMachine.VendingState getCurrentState() {
+        return stateOfVendingMachine.getVendingMachineState();
+    }
+
+    public boolean isValidTransitionState(StateOfVendingMachine.VendingState vendingState) {
+        StateOfVendingMachine.VendingState currentState = getCurrentState();
+        switch (currentState) {
+            case DISPENSING:
+            case IDLE :
+                return vendingState == StateOfVendingMachine.VendingState.PICK_SNACK;
+            case PICK_SNACK:
+                return vendingState == StateOfVendingMachine.VendingState.WAITING_FOR_PAYMENT;
+            case WAITING_FOR_PAYMENT:
+                return vendingState == StateOfVendingMachine.VendingState.DISPENSING;
+            default:
+                return true;
+        }
     }
 
 }
