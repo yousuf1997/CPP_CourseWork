@@ -71,6 +71,7 @@ public class VendingMachine {
         }
         this.stateOfVendingMachine.setDispensingState();
         this.snackDispenseHandler.handle(this);
+        this.stateOfVendingMachine.setIdleState();
     }
 
     public StateOfVendingMachine.VendingState getCurrentState() {
@@ -80,7 +81,6 @@ public class VendingMachine {
     public boolean isValidTransitionState(StateOfVendingMachine.VendingState vendingState) {
         StateOfVendingMachine.VendingState currentState = getCurrentState();
         switch (currentState) {
-            case DISPENSING:
             case IDLE :
                 return vendingState == StateOfVendingMachine.VendingState.PICK_SNACK;
             case PICK_SNACK:
