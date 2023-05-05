@@ -16,7 +16,6 @@ public class PaymentHandler extends SnackDispenseHandler {
                 return;
             }
             System.out.println("PaymentHandler : User has enough money to buy snack.");
-            vendingMachine.dispenseSnack();
         } else {
             // move to next
             this.handleNext().handle(vendingMachine);

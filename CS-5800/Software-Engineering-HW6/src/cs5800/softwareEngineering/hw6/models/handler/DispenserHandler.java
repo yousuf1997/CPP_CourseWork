@@ -17,9 +17,8 @@ public class DispenserHandler extends SnackDispenseHandler {
             }
             // decrease the quantity
             userSelectedSnack.setQuantity(userSelectedSnack.getQuantity() - 1);
-            vendingMachine.getStateOfVendingMachine().setDispensingState();
             System.out.println("DispenserHandler : Snack " + userSelectedSnack.getName() + " Has been dispensed. Balance of $" + (userInsertedMoney - userSelectedSnack.getPrice()) +  "  returned.");
-            vendingMachine.getStateOfVendingMachine().setIdleState();
+            return;
         }
         // move to next idle
         this.handleNext().handle(vendingMachine);

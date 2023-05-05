@@ -10,7 +10,7 @@ public class IdleStateHandler extends SnackDispenseHandler {
             // refresh the state
             vendingMachine.getStateOfVendingMachine().setCurrentSnackSelection(-1);
             vendingMachine.getStateOfVendingMachine().setCurrentInsertedMoney(0);
-            vendingMachine.getStateOfVendingMachine().setVendingMachineState(StateOfVendingMachine.VendingState.IDLE);
+            vendingMachine.getStateOfVendingMachine().setIdleState();
         } else {
             this.handleNext().handle(vendingMachine);
         }

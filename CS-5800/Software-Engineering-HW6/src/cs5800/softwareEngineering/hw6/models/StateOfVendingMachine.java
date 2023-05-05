@@ -15,22 +15,22 @@ public class StateOfVendingMachine {
     private double currentInsertedMoney;
 
     public void setIdleState() {
-        System.out.println("The Vending machine is transitioning to Idle state.");
+        System.out.println("Idle State");
         this.vendingMachineState = VendingState.IDLE;
     }
 
     public void setWaitingForMoneyState() {
-        System.out.println("The Vending machine is transitioning to Waiting for Money state.");
+        System.out.println("[Idle State ----> Snack Picking State ----> Waiting for Money]");
         this.vendingMachineState = VendingState.WAITING_FOR_PAYMENT;
     }
 
     public void setPickSnackState() {
-        System.out.println("The Vending machine is transitioning to Picking Snack state.");
+        System.out.println("[Idle State ----> Snack Picking State]");
         this.vendingMachineState = VendingState.PICK_SNACK;
     }
 
     public void setDispensingState() {
-        System.out.println("The Vending machine is transitioning to Waiting for Dispensing state.");
+        System.out.println("[Idle State ----> Snack Picking State ----> Waiting for Money ----> Dispensing State]");
         this.vendingMachineState = VendingState.DISPENSING;
     }
 
