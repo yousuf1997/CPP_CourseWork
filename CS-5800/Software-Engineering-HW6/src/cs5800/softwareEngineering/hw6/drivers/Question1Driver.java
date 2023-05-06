@@ -7,13 +7,7 @@ public class Question1Driver {
 
     public static void main(String[] args) {
 
-        SnackDispenseHandler initialHandler = new IdleStateHandler();
-        // this is kind of cycle, once the snack is properly dispensed the state will move to the idle
-        // next state of the ide should be the snack selection for next snack!
-        initialHandler.setNextHandler(new SnackSelectionHandler()).setNextHandler(new PaymentHandler()).setNextHandler(new DispenserHandler())
-                .setNextHandler(initialHandler);
-
-        VendingMachine vendingMachine = new VendingMachine(initialHandler);
+        VendingMachine vendingMachine = new VendingMachine();
 
         vendingMachine.listAllAvailableSnacks();
 

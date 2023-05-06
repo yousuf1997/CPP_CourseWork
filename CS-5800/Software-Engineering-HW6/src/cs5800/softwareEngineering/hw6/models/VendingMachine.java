@@ -1,6 +1,6 @@
 package cs5800.softwareEngineering.hw6.models;
 
-import cs5800.softwareEngineering.hw6.models.handler.SnackDispenseHandler;
+import cs5800.softwareEngineering.hw6.models.handler.*;
 
 import java.util.List;
 import java.util.stream.IntStream;
@@ -10,10 +10,14 @@ public class VendingMachine {
     private List<Snack> snackStock;
     private SnackDispenseHandler snackDispenseHandler;
 
-    public VendingMachine(SnackDispenseHandler snackDispenseHandler) {
+    public VendingMachine() {
         this.stateOfVendingMachine = new StateOfVendingMachine();
         loadAllSnacks();
-        this.snackDispenseHandler = snackDispenseHandler;
+        // this is kind of cycle, once the snack is properly dispensed the state will move to the idle
+        // next state of the ide should be the snack selection for next snack!
+        this.snackDispenseHandler = new IdleStateHandler();
+        this.snackDispenseHandler.setNextHandler(new SnackSelectionHandler()).setNextHandler(new PaymentHandler()).setNextHandler(new DispenserHandler())
+                .setNextHandler(this.snackDispenseHandler);
         stateOfVendingMachine.setIdleState();
     }
 
